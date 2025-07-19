@@ -40,6 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Call button alert
   const callBtn = document.getElementById("callBtn");
   callBtn?.addEventListener("click", () => {
-    alert("Apelare număr de telefon: +40 123 456 789");
+    alert("Apelare număr de telefon: +40 742  159 796");
   });
 });
