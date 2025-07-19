@@ -1,55 +1,58 @@
-// Navbar fade on scroll
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    navbar.classList.add('fade');
-  } else {
-    navbar.classList.remove('fade');
-  }
+// Smooth scroll fallback for browsers that don't support CSS scroll-behavior
+// (Optional: Only if you want to support older Safari versions)
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  });
 });
 
-// Carousel logic (manual navigation, no auto-slide)
-function setupCarousel(carousel) {
+// Generic Carousel Logic (for both homepage and schite)
+function setupCarousel(carouselSelector) {
+  const carousel = document.querySelector(carouselSelector);
+  if (!carousel) return;
+
   const images = carousel.querySelectorAll('.carousel-image');
   const prevBtn = carousel.querySelector('.carousel-btn.prev');
   const nextBtn = carousel.querySelector('.carousel-btn.next');
-  let index = 0;
 
-  function showImage(newIndex, direction = 'next') {
-    images.forEach((img, idx) => {
-      img.classList.remove('active', 'prev');
-      img.style.zIndex = 0;
-      img.style.left = carousel.classList.contains('carousel-schite') ? '100%' : '100vw';
-    });
-    images[index].classList.add('prev');
-    images[newIndex].classList.add('active');
-    images[newIndex].style.left = '0';
-    images[newIndex].style.zIndex = 1;
-    images[index].style.left = direction === 'next'
-      ? (carousel.classList.contains('carousel-schite') ? '-100%' : '-100vw')
-      : (carousel.classList.contains('carousel-schite') ? '100%' : '100vw');
-    images[index].style.zIndex = 1;
-    index = newIndex;
+  let current = 0;
+
+  function updateCarousel(nextIndex) {
+    images[current].classList.remove('active');
+    images[current].classList.add('prev');
+
+    images[nextIndex].classList.remove('prev');
+    images[nextIndex].classList.add('active');
+
+    current = nextIndex;
   }
 
-  function nextImage() {
-    const newIndex = (index + 1) % images.length;
-    showImage(newIndex, 'next');
-  }
-
-  function prevImage() {
-    const newIndex = (index - 1 + images.length) % images.length;
-    showImage(newIndex, 'prev');
-  }
-
-  if (nextBtn) nextBtn.addEventListener('click', nextImage);
-  if (prevBtn) prevBtn.addEventListener('click', prevImage);
-
-  // Initialize
-  images.forEach((img, i) => {
-    img.style.left = i === 0 ? '0' : (carousel.classList.contains('carousel-schite') ? '100%' : '100vw');
+  prevBtn?.addEventListener('click', () => {
+    const nextIndex = (current - 1 + images.length) % images.length;
+    updateCarousel(nextIndex);
   });
-  images[0].classList.add('active');
+
+  nextBtn?.addEventListener('click', () => {
+    const nextIndex = (current + 1) % images.length;
+    updateCarousel(nextIndex);
+  });
 }
 
-document.querySelectorAll('.carousel').forEach(setupCarousel);
+// Initialize both carousels
+setupCarousel('.carousel');
+setupCarousel('.carousel-schite');
+
+// Optional: Toggle mobile menu
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+menuToggle?.addEventListener('click', () => {
+  navLinks?.classList.toggle('open');
+});
+document.getElementById('callBtn').addEventListener('click', () => {
+  window.location.href = 'tel:+1234567890';
+});
