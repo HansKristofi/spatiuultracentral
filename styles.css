@@ -331,20 +331,21 @@ h2 {
     display: block;
   }
 
-  .nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: var(--white);
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem 0;
-    gap: 1rem;
-    display: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    z-index: 999;
-  }
+.nav-links {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--white);
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem 0; /* ✅ narrower, avoids overflow */
+  gap: 1rem;
+  display: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
 
   .nav-links.open {
     display: flex;
