@@ -1,3 +1,7 @@
+document.getElementById('menu-toggle').addEventListener('click', () => {
+  document.querySelector('.nav-links').classList.toggle('open');
+});
+
 // Smooth scroll fallback for browsers that don't support CSS scroll-behavior
 // (Optional: Only if you want to support older Safari versions)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
