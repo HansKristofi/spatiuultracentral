@@ -390,29 +390,57 @@ h2 {
 }
 
 @media (max-width: 600px) {
+  .carousel-image {
+  object-fit: contain !important;
+  width: 100vw;
+  height: 100vh;
+}
+
   #menu-toggle {
     display: block;
   }
+
   .nav-links {
     flex-direction: column;
     display: none;
     width: 100%;
+    background: #ffffff;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1001;
+    padding: 1rem 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   }
+
   .nav-links.open {
     display: flex;
   }
+
   .nav-menu {
     flex-direction: column;
-    gap: 0.5rem;
+    width: 100%;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
   }
-  .carousel-schite, .carousel-schite .carousel-image {
-    height: 40vh;
+
+  .nav-menu li {
+    width: 100%;
+    text-align: center;
   }
-  .carousel-schite .carousel-btn {
-    font-size: 1.5rem;
-    padding: 0.75rem;
+
+  .nav-menu a {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 0;
+  }
+
+  .nav-contact {
+    margin: 1rem auto 0;
   }
 }
+
 .call-btn {
   font-size: 1.25rem;
   padding: 1rem 2rem;
