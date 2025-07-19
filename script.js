@@ -8,38 +8,48 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Carousel logic
-function setupCarousel(section) {
-  const images = section.querySelectorAll('.carousel-image');
-  const prevBtn = section.querySelector('.carousel-btn.prev');
-  const nextBtn = section.querySelector('.carousel-btn.next');
+// Carousel logic (manual navigation, no auto-slide)
+function setupCarousel(carousel) {
+  const images = carousel.querySelectorAll('.carousel-image');
+  const prevBtn = carousel.querySelector('.carousel-btn.prev');
+  const nextBtn = carousel.querySelector('.carousel-btn.next');
   let index = 0;
 
-  function showImage(i) {
+  function showImage(newIndex, direction = 'next') {
     images.forEach((img, idx) => {
-      img.classList.toggle('active', idx === i);
+      img.classList.remove('active', 'prev');
+      img.style.zIndex = 0;
+      img.style.left = carousel.classList.contains('carousel-schite') ? '100%' : '100vw';
     });
+    images[index].classList.add('prev');
+    images[newIndex].classList.add('active');
+    images[newIndex].style.left = '0';
+    images[newIndex].style.zIndex = 1;
+    images[index].style.left = direction === 'next'
+      ? (carousel.classList.contains('carousel-schite') ? '-100%' : '-100vw')
+      : (carousel.classList.contains('carousel-schite') ? '100%' : '100vw');
+    images[index].style.zIndex = 1;
+    index = newIndex;
   }
 
-  prevBtn.addEventListener('click', () => {
-    index = (index - 1 + images.length) % images.length;
-    showImage(index);
-  });
+  function nextImage() {
+    const newIndex = (index + 1) % images.length;
+    showImage(newIndex, 'next');
+  }
 
-  nextBtn.addEventListener('click', () => {
-    index = (index + 1) % images.length;
-    showImage(index);
+  function prevImage() {
+    const newIndex = (index - 1 + images.length) % images.length;
+    showImage(newIndex, 'prev');
+  }
+
+  if (nextBtn) nextBtn.addEventListener('click', nextImage);
+  if (prevBtn) prevBtn.addEventListener('click', prevImage);
+
+  // Initialize
+  images.forEach((img, i) => {
+    img.style.left = i === 0 ? '0' : (carousel.classList.contains('carousel-schite') ? '100%' : '100vw');
   });
+  images[0].classList.add('active');
 }
 
-document.querySelectorAll('.carousel').forEach(carousel => {
-  setupCarousel(carousel.closest('section'));
-});
-// Mobile Menu Toggle
-const menuToggle = document.getElementById('menu-toggle');
-const navLinks = document.getElementById('nav-links');
-
-menuToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('show');
-});
-
+document.querySelectorAll('.carousel').forEach(setupCarousel);
