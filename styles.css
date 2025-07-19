@@ -368,6 +368,11 @@ h2 {
     display: block;
   }
 
+  .nav-contact {
+    margin-left: 0;
+    box-shadow: none;
+  }
+
   nav {
     flex-wrap: wrap;
     align-items: center;
