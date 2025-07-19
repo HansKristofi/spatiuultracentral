@@ -1,62 +1,45 @@
-document.getElementById('menu-toggle').addEventListener('click', () => {
-  document.querySelector('.nav-links').classList.toggle('open');
-});
+document.addEventListener("DOMContentLoaded", () => {
+  // Toggle nav menu on mobile
+  const menuToggle = document.getElementById("menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
 
-// Smooth scroll fallback for browsers that don't support CSS scroll-behavior
-// (Optional: Only if you want to support older Safari versions)
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
+  menuToggle?.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+  });
+
+  // Carousel logic for all carousels on page
+  document.querySelectorAll(".carousel").forEach(carousel => {
+    const images = carousel.querySelectorAll(".carousel-image");
+    const prevBtn = carousel.querySelector(".carousel-btn.prev");
+    const nextBtn = carousel.querySelector(".carousel-btn.next");
+    let currentIndex = 0;
+
+    function showImage(index) {
+      images.forEach((img, i) => {
+        img.classList.toggle("active", i === index);
+      });
     }
-  });
-});
 
-// Generic Carousel Logic (for both homepage and schite)
-function setupCarousel(carouselSelector) {
-  const carousel = document.querySelector(carouselSelector);
-  if (!carousel) return;
+    prevBtn?.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(currentIndex);
+    });
 
-  const images = carousel.querySelectorAll('.carousel-image');
-  const prevBtn = carousel.querySelector('.carousel-btn.prev');
-  const nextBtn = carousel.querySelector('.carousel-btn.next');
+    nextBtn?.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    });
 
-  let current = 0;
-
-  function updateCarousel(nextIndex) {
-    images[current].classList.remove('active');
-    images[current].classList.add('prev');
-
-    images[nextIndex].classList.remove('prev');
-    images[nextIndex].classList.add('active');
-
-    current = nextIndex;
-  }
-
-  prevBtn?.addEventListener('click', () => {
-    const nextIndex = (current - 1 + images.length) % images.length;
-    updateCarousel(nextIndex);
+    // Optional: Auto-slide every 5 seconds
+    // setInterval(() => {
+    //   currentIndex = (currentIndex + 1) % images.length;
+    //   showImage(currentIndex);
+    // }, 5000);
   });
 
-  nextBtn?.addEventListener('click', () => {
-    const nextIndex = (current + 1) % images.length;
-    updateCarousel(nextIndex);
+  // Call button alert
+  const callBtn = document.getElementById("callBtn");
+  callBtn?.addEventListener("click", () => {
+    alert("Apelare număr de telefon: +40 123 456 789");
   });
-}
-
-// Initialize both carousels
-setupCarousel('.carousel');
-setupCarousel('.carousel-schite');
-
-// Optional: Toggle mobile menu
-const menuToggle = document.getElementById('menu-toggle');
-const navLinks = document.querySelector('.nav-links');
-
-menuToggle?.addEventListener('click', () => {
-  navLinks?.classList.toggle('open');
-});
-document.getElementById('callBtn').addEventListener('click', () => {
-  window.location.href = 'tel:+1234567890';
 });
