@@ -7,19 +7,15 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
- <nav id="navbar">
-  <div class="nav-top">
-    <a href="#home" class="logo">Spatiu Ultra Central</a>
-    <button id="menu-toggle">&#9776;</button> <!-- Hamburger -->
-  </div>
-  <ul class="nav-left" id="nav-links">
-    <li><a href="#despre">Despre Cladire</a></li>
-    <li><a href="#schite">Schite</a></li>
-    <li><a href="#harta">Harta</a></li>
-    <li><a href="#contact" class="nav-contact">Contact</a></li>
-  </ul>
-</nav>
-
+  <nav id="navbar">
+    <ul class="nav-left">
+      <li><a href="#home" class="nav-brand">Spatiu Ultra Central</a></li>
+      <li><a href="#despre">Despre Cladire</a></li>
+      <li><a href="#schite">Schite</a></li>
+      <li><a href="#harta">Harta</a></li>
+    </ul>
+    <a class="nav-contact" href="#contact">Contact</a>
+  </nav>
 
   <section id="home" class="carousel-section">
     <div class="carousel">
@@ -38,50 +34,53 @@
       <button class="carousel-btn prev">&#10094;</button>
       <button class="carousel-btn next">&#10095;</button>
     </div>
+    <div class="carousel-overlay">
+      <h1>Spatiu Ultra Central</h1>
+    </div>
   </section>
 
   <section id="despre" class="section">
-  <div class="text-left">
-    <h2>Clădire central de birouri – ROTH Business House</h2>
-    <p><strong>Ideală pentru:</strong> clinici medicale, cabinete stomatologice, case de avocatură, notariate</p>
-    <ul style="list-style: none; padding-left: 0;">
-      <li>🔹 Se închiriază în întregime, 500 mp util – perfectă pentru afaceri consolidate</li>
-      <li>📍 Locație excepțională – în inima Oradei, cu acces facil pentru clienți și colaboratori</li>
-      <li>⚡️ Putere electrică trifazică – 15 kWh – ideală pentru echipamente profesionale</li>
-      <li>🌐 Internet de mare viteză</li>
-      <li>🛎️ Recepție dedicată</li>
-      <li>❄️ Sistem de aer condiționat</li>
-      <li>🚗 Parcări publice disponibile în imediata apropiere</li>
-      <li>📦 Clădirea este disponibilă doar pentru închiriere integrală, oferind control total asupra spațiului și identității de brand.</li>
-    </ul>
-    <a class="call-btn" href="tel:+40740000000">Suna acum</a>
-  </div>
-</section>
+    <div class="text-left">
+      <h2>Clădire central de birouri – ROTH Business House</h2>
+      <p><strong>Ideală pentru:</strong> clinici medicale, cabinete stomatologice, case de avocatură, notariate</p>
+      <ul style="list-style: none; padding-left: 0;">
+        <li>🔹 Se închiriază în întregime, 500 mp util – perfectă pentru afaceri consolidate</li>
+        <li>📍 Locație excepțională – în inima Oradei, cu acces facil pentru clienți și colaboratori</li>
+        <li>⚡️ Putere electrică trifazică – 15 kWh – ideală pentru echipamente profesionale</li>
+        <li>🌐 Internet de mare viteză</li>
+        <li>🛎️ Recepție dedicată</li>
+        <li>❄️ Sistem de aer condiționat</li>
+        <li>🚗 Parcări publice disponibile în imediata apropiere</li>
+        <li>📦 Clădirea este disponibilă doar pentru închiriere integrală, oferind control total asupra spațiului și identității de brand.</li>
+      </ul>
+      <a class="call-btn" href="tel:+40740000000">Suna acum</a>
+    </div>
+  </section>
 
-<section id="schite" class="section">
-  <div class="text-left">
-    <h2>Schite despre Cladire</h2>
-    <p>Proprietatea are o suprafață construită de 636 mp și o suprafață utilă de 500 mp, fiind structurată în trei corpuri de clădire:</p>
-    <ul class="building-list">
-      <li><strong>C1:</strong> Clădire principală cu regim de înălțime P+2</li>
-      <li><strong>C2:</strong> Clădire alipită de C1</li>
-      <li><strong>C3:</strong> Clădire separată (conform schițelor anexate)</li>
-    </ul>
-  </div>
-  <div class="carousel">
-    <img src="schita1.jpg" class="carousel-image active" />
-    <img src="schita2.jpg" class="carousel-image" />
-    <img src="schita3.jpg" class="carousel-image" />
-    <button class="carousel-btn prev">&#10094;</button>
-    <button class="carousel-btn next">&#10095;</button>
-  </div>
-</section>
+  <section id="schite" class="section">
+    <div class="text-left">
+      <h2>Schite despre Cladire</h2>
+      <p>Proprietatea are o suprafață construită de 636 mp și o suprafață utilă de 500 mp, fiind structurată în trei corpuri de clădire:</p>
+      <ul class="building-list">
+        <li><strong>C1:</strong> Clădire principală cu regim de înălțime P+2</li>
+        <li><strong>C2:</strong> Clădire alipită de C1</li>
+        <li><strong>C3:</strong> Clădire separată (conform schițelor anexate)</li>
+      </ul>
+    </div>
+    <div class="carousel carousel-schite">
+      <img src="schita1.jpg" class="carousel-image active" />
+      <img src="schita2.jpg" class="carousel-image" />
+      <img src="schita3.jpg" class="carousel-image" />
+      <button class="carousel-btn prev">&#10094;</button>
+      <button class="carousel-btn next">&#10095;</button>
+    </div>
+  </section>
 
   <section id="harta" class="section">
     <h2>Harta</h2>
     <iframe
       src="https://www.google.com/maps?q=Strada+Mihai+Viteazul+12,+Oradea+410095&output=embed"
-      width="100%" height="400" style="border:0;" allowfullscreen loading="lazy">
+      width="100%" height="400" allowfullscreen loading="lazy">
     </iframe>
   </section>
 
@@ -94,7 +93,6 @@
       <button type="submit">Trimite</button>
     </form>
   </section>
-
   <script src="script.js"></script>
 </body>
 </html>
