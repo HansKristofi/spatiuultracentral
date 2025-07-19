@@ -369,18 +369,19 @@ h2 {
     display: block;
   }
 
-  .nav-contact {
-  margin-left: 0 !important;         /* override desktop margin */
-  width: 100%;                       /* take full width */
-  padding: 0.75rem 1rem;             /* same as other links */
-  text-align: left;                  /* align text like other links */
-  border-radius: 6px;                /* match nav-menu items */
-  box-shadow: none;                 /* remove desktop shadow */
-  background: var(--blue);          /* keep button look */
-  color: var(--white) !important;   /* force white text */
+.nav-contact {
+  width: 100%;
+  margin-left: 0 !important;
+  padding: 0.75rem 1rem;
+  box-shadow: none;
+  border-radius: 6px;
+  text-align: left;
+  background: var(--blue);
+  color: var(--white) !important;
   font-weight: 600;
-  display: block;                   /* ensure it behaves like a block element */
+  display: block;
 }
+
 
 
   nav {
